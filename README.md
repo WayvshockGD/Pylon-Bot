@@ -1,7 +1,7 @@
 # Pylon.bot
 Code for use with [Pylon.bot](https://Pylon.bot)
 
-[](https://raw.githubusercontent.com/newhorizon-development/Pylon-Bot/master/images/Screenshot_2020-11-01_02-25-13.png)
+![](https://raw.githubusercontent.com/newhorizon-development/Pylon-Bot/master/images/Screenshot_2020-11-01_02-25-13.png)
 
 ## Information
 
