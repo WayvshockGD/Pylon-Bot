@@ -11,7 +11,7 @@ Before you puhs anything to this repo please be sure it follows these guidelines
 
  - Must be functional.
  - Must be a `.ts` file type.
- - Do NOT simply try to rebrand commands already implemented.
+ - Edits and imporvements are allowed. However, do **NOT** simply try to rebrand commands already implemented.
  - Must provide a detailed explanation of the command in the commit description so we know what it is and what it does.
  - Must push **ONLY** to the review branch.
 
