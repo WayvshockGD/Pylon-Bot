@@ -7,7 +7,7 @@ Code for use with [Pylon.bot](https://Pylon.bot)
 
 
 This repo was created for use with storing and sharing code to use with [Pylon.bot](https://Pylon.bot).
-Before you puhs anything to this repo please be sure it follows these guidelines:
+Before you push anything to this repo please be sure it follows these guidelines:
 
  - Must be functional.
  - Must be a `.ts` file type.
