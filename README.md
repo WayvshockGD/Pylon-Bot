@@ -16,4 +16,4 @@ Before you push anything to this repo please be sure it follows these guidelines
  - Must push **ONLY** to the review branch.
 
 ### Support
- [Pylon.bot | Discord](https://discord.gg/hC6Bbtj)
+ [Discord](https://discord.gg/hC6Bbtj)
