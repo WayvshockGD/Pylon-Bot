@@ -1,5 +1,19 @@
 # Pylon.bot
 Code for use with [Pylon.bot](https://Pylon.bot)
 
+[](https://raw.githubusercontent.com/newhorizon-development/Pylon-Bot/master/images/Screenshot_2020-11-01_02-25-13.png)
 
-## 
+## Information
+
+
+This repo was created for use with storing and sharing code to use with [Pylon.bot](https://Pylon.bot).
+Before you puhs anything to this repo please be sure it follows these guidelines:
+
+ - Must be functional.
+ - Must be a `.ts` file type.
+ - Do NOT simply try to rebrand commands already implemented.
+ - Must provide a detailed explanation of the command in the commit description so we know what it is and what it does.
+ - Must push **ONLY** to the review branch.
+
+### Support
+ [Pylon.bot | Discord](https://discord.gg/hC6Bbtj)
