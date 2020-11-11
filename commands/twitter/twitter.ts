@@ -1,4 +1,4 @@
-const prefix = 'p.';
+const prefix = '!';
 const TwitterSubCfg = {
   TWITTER_API_KEY: '',
   TWITTER_BEARER_TOKEN:

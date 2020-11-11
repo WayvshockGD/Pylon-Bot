@@ -67,6 +67,7 @@ const joinLeaveImage = async (
   };
   
   discord.on(discord.Event.GUILD_MEMBER_ADD, async (member) => {
+    await member.addRole(' ');
     await joinLeaveImage(true, member);
   });
   

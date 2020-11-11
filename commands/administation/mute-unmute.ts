@@ -1,4 +1,4 @@
-const prefix = 'p.';
+const prefix = '!';
 const muteRole = ' ';
 const muteKv = new pylon.KVNamespace('mutes');
 const cmd = new discord.command.CommandGroup({
