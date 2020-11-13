@@ -12,7 +12,8 @@ cmd.raw(
   {
     name: 'menu',
     aliases: ['help', 'h', 'Menu', 'Help', 'H'],
-    description: 'Displays the Pylon Menu'
+    description: 'Displays the Pylon Menu',
+    filters: USER_PERMS
   },
   async (msg) => {
     const menu = new discord.Embed();

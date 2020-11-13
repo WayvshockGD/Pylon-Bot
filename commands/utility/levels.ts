@@ -98,8 +98,12 @@ discord.on(discord.Event.MESSAGE_CREATE, async (message: discord.Message) => {
     await sendRankCard(message, message.author, newXP, true);
 });
 
-cmd.on(
-  { name: 'rank', aliases: ['level'], description: 'Rank card' },
+cmd.on({ 
+  name: 'rank',
+  aliases: ['level', 'lvl', 'xp'],
+  description: 'Displays the user\'s guild rank',
+  filters: USER_PERMS
+ },
   (args) => ({ user: args.userOptional() }),
   async (message, { user }) => {
     const target = user ?? message.author;
@@ -111,8 +115,10 @@ cmd.on(
 
 cmd.on(
   {
-    name: 'top',
-    description: 'XP leaderboard'
+    name: 'leaderboard',
+    aliases: ['top', 'lead', 'board'],
+    description: 'XP leaderboard',
+    filters: USER_PERMS
   },
   () => ({}),
   async (message: discord.Message) => {
