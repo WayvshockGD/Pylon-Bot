@@ -55,7 +55,7 @@ discord.registerEventHandler('MESSAGE_REACTION_ADD', async (theReaction) => {
     await option1.setColor(0x3f888f);
     await option1.setTitle('Moderation Commands');
     await option1.setDescription(
-      '```ts\n┏ kick [@member] ● Kick a member from the guild.\n┣ ban [@member] [reason] ● Ban a member from the guild for s specified reason.\n┣ mute [@member] ● Mute a member\n┗ unmute [@member] ● Unmutes a member.\n```'
+      ' `kick [@member]`: Kick a member from the guild.\n `ban [@member] [reason]`: Ban a member from the guild for s specified reason.\n `mute [@member]`: Mute a member\n `unmute [@member]`: Unmutes a member.\n `broadcast`: Broadcast a message to all channels in the guild.'
     );
     const theMsg2 = await theMsg.reply(option1);
     MSGID = '';
@@ -72,7 +72,7 @@ discord.registerEventHandler('MESSAGE_REACTION_ADD', async (theReaction) => {
     await option2.setColor(0x3f888f);
     await option2.setTitle('Twitter Commands');
     await option2.setDescription(
-      '```ts\n┏ twitter sub [Twitter Handle] [Channel] ● Subscribe to a twitter handle in the specified channel.\n┣ Twitter unsub [Twitter Handle] ● Unsuscrive from a specified Twitter Handle.\n┗ twitter list ● List all subscribed Twitter Handles.\n```'
+      ' `twitter sub [Twitter Handle] [Channel]`: Subscribe to a twitter handle in the specified channel.\n `twitter unsub [Twitter Handle]`: Unsubscribe from a specified Twitter Handle.\n `twitter list`: List all subscribed Twitter Handles.'
     );
     const theMsg3 = await theMsg.reply(option2);
     MSGID = '';
@@ -88,7 +88,7 @@ discord.registerEventHandler('MESSAGE_REACTION_ADD', async (theReaction) => {
     await option3.setColor(0x3f888f);
     await option3.setTitle('Fun Commands');
     await option3.setDescription(
-      '```ts\n┏ minesweeper ● Start a solo game of Minesweeper.\n┣ minesweeperCoop ● Start a Coop game of Minesweeper.\n┗ op [x] [y] ● Selects a square in Minesweeper.\n```'
+      '`minesweeper`: Start a solo game of Minesweeper.\n `minesweeperCoop`: Start a Coop game of Minesweeper.\n `op [x] [y]`: Selects a square in Minesweeper.'
     );
 
     const theMsg4 = await theMsg.reply(option3);
@@ -105,7 +105,7 @@ discord.registerEventHandler('MESSAGE_REACTION_ADD', async (theReaction) => {
     await option4.setColor(0x3f888f);
     await option4.setTitle('Utility Commands');
     await option4.setDescription(
-      '```ts\n┏ ping ● Makes the bot respond with Pong!\n┣ info [@member] ● Grabs a members guild info.\n┣ rank [@member] ● Grabs a members guild rank.\n┣ top ● Returns the guild leaderboard.\n┗ menu ● Responds with the guilds menu.\n```'
+      ' `ping`: Makes the bot respond with Pong!\n `info [@member]`: Grabs a members guild info.\n `rank [@member]`: Grabs a members guild rank.\n `top`: Returns the guild leaderboard.\n menu: Responds with the guilds menu.'
     );
 
     const theMsg4 = await theMsg.reply(option4);

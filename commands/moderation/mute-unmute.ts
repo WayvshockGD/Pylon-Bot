@@ -1,9 +1,8 @@
 const prefix = '!';
-const muteRole = ' ';
+const muteRole = MUTE_ROLE;
 const muteKv = new pylon.KVNamespace('mutes');
 const cmd = new discord.command.CommandGroup({
-  defaultPrefix: prefix,
-  filters: discord.command.filters.isAdministrator()
+  defaultPrefix: prefix
 });
 
 async function TempMute(member: discord.GuildMember, duration: number) {
@@ -44,7 +43,11 @@ pylon.tasks.cron('Every_5_Min', '0 0/5 * * * * *', async () => {
 });
 
 cmd.on(
-  'mute',
+  {
+    name: 'mute',
+    aliases: ['m'],
+    filters: MOD_PERMS
+  },
   (ctx) => ({
     member: ctx.guildMember(),
     duration: ctx.integer({ minValue: 1, maxValue: 1000000 })
@@ -62,7 +65,11 @@ cmd.on(
 );
 
 cmd.on(
-  'unmute',
+  {
+    name: 'unmute',
+    aliases: ['u'],
+    filters: MOD_PERMS
+  },
   (ctx) => ({
     member: ctx.guildMember()
   }),

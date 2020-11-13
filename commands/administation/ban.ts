@@ -4,8 +4,11 @@ const cmd = new discord.command.CommandGroup({
   filters: discord.command.filters.canBanMembers()
 });
 
-cmd.on(
-  'ban',
+cmd.on( {
+  name: 'ban',
+  aliases: ['b'],
+  filters: ADMIN_PERMS
+},
   (args) => ({
     user: args.user(),
     reason: args.textOptional()

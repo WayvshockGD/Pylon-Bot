@@ -4,8 +4,11 @@ const cmd = new discord.command.CommandGroup({
 });
 
 cmd.on(
-  { name: 'kick', filters: discord.command.filters.canKickMembers() },
-
+  {
+    name: 'kick',
+    aliases: ['k'],
+    filters: ADMIN_PERMS
+  },
   (ctx) => ({
     member: ctx.guildMember()
   }),
