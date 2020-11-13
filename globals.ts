@@ -12,8 +12,8 @@ global.ADMIN_ROLE = '';
 global.MUTE_ROLE = '';
 
 // icon URLs
-global.TWITTER_ICON =
-    'https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png';
+global.TWITTER_ICON = 'https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png';
+global.TWITCH_ICON = 'https://cdn0.iconfinder.com/data/icons/brands-flat-2/200/twitch-social-network-brand-logo-256.png';
 
 // channel IDs
 global.JOIN_LEAVE_CHANNEL = '';
