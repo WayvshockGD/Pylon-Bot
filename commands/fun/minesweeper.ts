@@ -11,12 +11,22 @@ var firstTime: boolean;
 var theActualField: Array<string>;
 var winCounter: number = 0;
 
-cmd.raw('showField', async (msg) => {
+cmd.raw({
+  name: 'showfield',
+  aliases: ['sf', 'field', 'show'],
+  description: 'Shows the field',
+  filters: USER_PERMS
+}, async (msg) => {
   await msg?.reply((await generateField(10, 3, false, -1)).join(''));
 });
 
-cmd.on(
-  'minesweeper',
+cmd.on({
+  name: 'minesweeper',
+  aliases: ['ms', 'mine'],
+  description: 'Starts a solo game of Minesweeper',
+  filters: USER_PERMS
+},
+
   (args) => ({
     fieldSize: args.numberOptional(),
     numberOfBombs: args.numberOptional()
@@ -56,8 +66,12 @@ cmd.on(
   }
 );
 
-cmd.on(
-  'minesweeperCoop',
+cmd.on({
+  name: 'minesweeperCoop',
+  aliases: ['msc', 'coop'],
+  description: 'Starts a Coop game of Minesweeper',
+  filters: USER_PERMS
+},
   (args) => ({
     fieldSize: args.numberOptional(),
     numberOfBombs: args.numberOptional()
@@ -106,8 +120,12 @@ cmd.on(
   }
 );
 
-cmd.on(
-  'op',
+cmd.on({
+  name: 'op',
+  aliases: ['position', 'square'],
+  description: 'select a square to uncover in a game of Minesweeper',
+  filters: USER_PERMS
+}.
   (args) => ({
     x: args.number(),
     y: args.number()

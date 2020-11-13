@@ -1,10 +1,9 @@
 const prefix = '!';
 const TwitterSubCfg = {
-  TWITTER_API_KEY: '',
-  TWITTER_BEARER_TOKEN:
-    '',
-  ICON_URL: 'https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png',
-  REQUIRED_ROLE_ID: '721103743579324467'
+  TWITTER_API_KEY: TWITTER_API,
+  TWITTER_BEARER_TOKEN: TWITTER_BEARER,
+  ICON_URL: TWITTER_ICOM,
+  REQUIRED_ROLE_ID: ADMIN_ROLE
 };
 
 class TwitterClient {
@@ -82,134 +81,151 @@ interface TwitterUser {
   screen_name: string;
 }
 
-cmd.subcommand('twitter', (subcmd) => {
-  subcmd.on(
-    'sub',
-    (ctx) => ({
-      username: ctx.string(),
-      channel: ctx.stringOptional()
-    }),
-    async (msg, { username, channel }) => {
-      let userId = await TwitterClient.getUserIdByUserName(username);
-      if (userId == null) {
-        await msg.reply(
-          createEmbedMessage(
-            `:x: Cannot find Twitter user with the name **${username}**`
-          )
-        );
-        return;
-      }
+cmd.subcommand({
+  name: 'twitter',
+  aliases: ['t']
+},
+  'twitter', (subcmd) => {
+    subcmd.on({
+      name: 'subscribe',
+      aliases: ['sub', 'add'],
+      description: 'Subscribe to a specified Twitter Handle in a specified channel'
+    },
+      (ctx) => ({
+        username: ctx.string(),
+        channel: ctx.stringOptional()
+      }),
+      async (msg, { username, channel }) => {
+        let userId = await TwitterClient.getUserIdByUserName(username);
+        if (userId == null) {
+          await msg.reply(
+            createEmbedMessage(
+              `:x: Cannot find Twitter user with the name **${username}**`
+            )
+          );
+          return;
+        }
 
-      let existingSub = await twitterSubKv.get<string>(userId);
-      if (existingSub != null) {
-        let sub: TwitterSub = JSON.parse(existingSub);
-        let subChannel = await discord.getGuildTextChannel(sub.channelId);
-        await msg.reply(
-          createEmbedMessage(
-            `:x: There is a subscription already to this feed in ${subChannel?.toMention() ??
+        let existingSub = await twitterSubKv.get<string>(userId);
+        if (existingSub != null) {
+          let sub: TwitterSub = JSON.parse(existingSub);
+          let subChannel = await discord.getGuildTextChannel(sub.channelId);
+          await msg.reply(
+            createEmbedMessage(
+              `:x: There is a subscription already to this feed in ${subChannel?.toMention() ??
               '*Unknown channel*'}`
-          )
-        );
-        return;
-      }
+            )
+          );
+          return;
+        }
 
-      let channelId =
-        channel == null ? msg.channelId : stripMentionableChannelId(channel);
-      let ch = await discord.getGuildTextChannel(channelId);
+        let channelId =
+          channel == null ? msg.channelId : stripMentionableChannelId(channel);
+        let ch = await discord.getGuildTextChannel(channelId);
 
-      if (ch == null) {
-        msg.reply(createEmbedMessage(':x: Invalid channel'));
-        return;
-      }
+        if (ch == null) {
+          msg.reply(createEmbedMessage(':x: Invalid channel'));
+          return;
+        }
 
-      let twitterSub: TwitterSub = {
-        channelId: stripMentionableChannelId(channelId)
-      };
-      await twitterSubKv.put(userId, JSON.stringify(twitterSub));
+        let twitterSub: TwitterSub = {
+          channelId: stripMentionableChannelId(channelId)
+        };
+        await twitterSubKv.put(userId, JSON.stringify(twitterSub));
 
-      let twitterNames = await TwitterClient.getUserNames([userId]);
-      await msg.reply(
-        createEmbedMessage(
-          `:white_check_mark: Successfully subscribed to [@${
-            twitterNames[0]
-          }](https://twitter.com/${twitterNames[0]}) in ${ch.toMention()}`
-        )
-      );
-
-      await fetchTweets();
-    }
-  );
-
-  subcmd.on(
-    'unsub',
-    (ctx) => ({ username: ctx.string() }),
-    async (msg, { username }) => {
-      let userId = await TwitterClient.getUserIdByUserName(username);
-      if (userId == null) {
+        let twitterNames = await TwitterClient.getUserNames([userId]);
         await msg.reply(
           createEmbedMessage(
-            `:x: Cannot find Twitter user with the name **${username}**`
+            `:white_check_mark: Successfully subscribed to [@${twitterNames[0]
+            }](https://twitter.com/${twitterNames[0]}) in ${ch.toMention()}`
           )
         );
-        return;
-      }
 
-      let sub = await twitterSubKv.get<string>(userId);
-      if (sub == null) {
+        await fetchTweets();
+      }
+    );
+
+    subcmd.on({
+      name: 'unsubscribe',
+      aliases: ['unsub', 'remove', 'delete', 'del', 'rem'],
+      description: 'Unsubsribe from a specified Twitter Handle'
+    },
+      (ctx) => ({ username: ctx.string() }),
+      async (msg, { username }) => {
+        let userId = await TwitterClient.getUserIdByUserName(username);
+        if (userId == null) {
+          await msg.reply(
+            createEmbedMessage(
+              `:x: Cannot find Twitter user with the name **${username}**`
+            )
+          );
+          return;
+        }
+
+        let sub = await twitterSubKv.get<string>(userId);
+        if (sub == null) {
+          await msg.reply(
+            createEmbedMessage(':x: There is no subscription for this feed')
+          );
+          return;
+        }
+
+        await twitterSubKv.delete(userId);
+
+        let twitterNames = await TwitterClient.getUserNames([userId]);
         await msg.reply(
-          createEmbedMessage(':x: There is no subscription for this feed')
+          createEmbedMessage(
+            `:white_check_mark: Successfully unsubscribed from [@${twitterNames[0]}](https://twitter.com/${twitterNames[0]})`
+          )
         );
+      }
+    );
+
+    subcmd.raw({
+      name: 'list',
+      aliases: ['l'],
+      description: 'Displays a list of currently sebscribed Twitter Handles']
+    }, async (msg) => {
+      let keys = await twitterSubKv.list();
+      if (keys.length == 0) {
+        await msg.reply(createEmbedMessage(':x: There are no subscriptions'));
         return;
       }
 
-      await twitterSubKv.delete(userId);
+      let items = await twitterSubKv.items();
+      let usernames = await TwitterClient.getUserNames(keys);
+      let listMsg = new Array<string>();
 
-      let twitterNames = await TwitterClient.getUserNames([userId]);
+      for (let i = 0; i < keys.length; i++) {
+        let sub: TwitterSub = JSON.parse(items[i].value as string);
+        let channel = await discord.getGuildTextChannel(sub.channelId);
+        listMsg.push(
+          `@${usernames[i]} -> ${channel?.toMention() ?? '*Unknown channel*'}`
+        );
+      }
+
       await msg.reply(
         createEmbedMessage(
-          `:white_check_mark: Successfully unsubscribed from [@${twitterNames[0]}](https://twitter.com/${twitterNames[0]})`
+          listMsg.join('\n'),
+          'Subscriptions',
+          `${keys.length} subscribed feeds`
         )
       );
-    }
-  );
+    });
 
-  subcmd.raw('list', async (msg) => {
-    let keys = await twitterSubKv.list();
-    if (keys.length == 0) {
-      await msg.reply(createEmbedMessage(':x: There are no subscriptions'));
-      return;
-    }
-
-    let items = await twitterSubKv.items();
-    let usernames = await TwitterClient.getUserNames(keys);
-    let listMsg = new Array<string>();
-
-    for (let i = 0; i < keys.length; i++) {
-      let sub: TwitterSub = JSON.parse(items[i].value as string);
-      let channel = await discord.getGuildTextChannel(sub.channelId);
-      listMsg.push(
-        `@${usernames[i]} -> ${channel?.toMention() ?? '*Unknown channel*'}`
+    subcmd.raw({
+      name: 'poll',
+      aliases: ['count'],
+      description: 'Displays the number of new Tweets'
+    }, async (msg) => {
+      let tweetCount = await fetchTweets();
+      await msg.reply(
+        createEmbedMessage(
+          `:white_check_mark: Manual polling found ${tweetCount} new tweets`
+        )
       );
-    }
-
-    await msg.reply(
-      createEmbedMessage(
-        listMsg.join('\n'),
-        'Subscriptions',
-        `${keys.length} subscribed feeds`
-      )
-    );
+    });
   });
-
-  subcmd.raw('poll', async (msg) => {
-    let tweetCount = await fetchTweets();
-    await msg.reply(
-      createEmbedMessage(
-        `:white_check_mark: Manual polling found ${tweetCount} new tweets`
-      )
-    );
-  });
-});
 
 pylon.tasks.cron('twitter-sub', '0 0/5 * * * * *', async () => {
   await fetchTweets();

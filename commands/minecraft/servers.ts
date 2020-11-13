@@ -3,7 +3,13 @@ const cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });
 
-cmd.raw('servers', async (message) => {
+cmd.raw({
+  name: 'servers',
+  aliases: ['ip'],
+  description: 'Displays a list of the guild\'s minecraft servers',
+  filters: USER_PERMS
+},
+   async (message) => {
   const richEmbed = new discord.Embed();
   richEmbed.setColor(0x00ffa6);
   richEmbed.setTitle('AeroSky Network');
