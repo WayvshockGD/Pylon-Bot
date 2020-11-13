@@ -1,17 +1,21 @@
 import './globals';
-import './evernts/message';
-import './events/userjoin';
+import './events/message';
+import './events/join-leave';
 import './events//logs';
 import './events/roles';
 import './commands/administration/kick';
-import './commands/administration/band';
+import './commands/administration/ban';
 import './commands/administration/broadcast';
-import './commands/administration/mute-unmute';
+import './commands/moderation/mute-unmute';
 import './commands/fun/minesweeper';
 import './commands/twitter/twitter';
 import './commands/twitch/twitch';
 import './commands/economy/potato';
-import './commands/support/help';
+import './commands/utility/menu';
+import './commands/utility/commands';
+import './commands/utility/info';
+import './commands/utility/levels';
+import './commands/utility/ping';
 
 import KVManager from './kvManager';
 
