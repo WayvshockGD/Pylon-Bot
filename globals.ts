@@ -30,7 +30,9 @@ global.MOD_PERMS = f.and(
     f.canManageMessages(),
     f.canManageRoles()
 );
-global.HELPER_PERMS = f.and(f.canManageMessages());
+global.HELPER_PERMS = f.and(
+    f.canManageMessages()
+    );
 global.USER_PERMS = f.and(
     f.canSendMessages(),
     f.canEmbedLinks(),

@@ -12,7 +12,8 @@ cmd.raw(
   {
     name: 'commands',
     aliases: ['cmd'],
-    description: 'Displays the guilds commands'
+    description: 'Displays the guilds commands',
+    filters: USER_PERMS
   },
   async (msg) => {
     const menu = new discord.Embed();
