@@ -1,7 +1,91 @@
-const prefix = '!';
-const cmd = new discord.command.CommandGroup({
+const prefix = GUILD_PREFIX;
+const commands = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });
+
+commands.on(
+  {
+    name: 'help',
+    description: `${prefix}help [command]`,
+    category: 'Support',
+    filters: USER
+  },
+  (args) => ({
+    command: args.stringOptional()
+  }),
+  async (message, { command }) => {
+    if (!command) {
+      const embed = new discord.Embed();
+      embed.setTitle('Fun Commands');
+      embed.setFooter({
+        text: `For ${message.author.getTag()}`,
+        iconUrl: message.author.getAvatarUrl()
+      });
+
+      const json: any = {};
+
+      const commandsName = Array.from(commands.commandExecutors.keys());
+
+      let str: any = '';
+
+      commandsName.map(function(key: any) {
+        if (
+          !json.hasOwnProperty(
+            commands.commandExecutors.get(key).executor.options.category
+          )
+        )
+          json[
+            commands.commandExecutors.get(key).executor.options.category
+          ] = [];
+
+        json[commands.commandExecutors.get(key).executor.options.category].push(
+          key
+        );
+      });
+
+      for (let category in json) {
+        str += `**${category} Commands** ${json[category].join(', ')}\n`;
+      }
+
+      embed.setDescription(str);
+
+      await message.reply({
+        embed: embed
+      });
+    } else {
+      const cmd = commands.commandExecutors.get(command);
+      if (!cmd)
+        return message.reply({
+          embed: new discord.Embed().setDescription('Invalid command.')
+        });
+
+      const embed = new discord.Embed();
+      embed.setTitle(`Help for "${cmd.executor.options.name}"`);
+      embed.setDescription(
+        `Description: ${cmd.executor.options.description || 'None.'}`
+      );
+      embed.addField({
+        name: 'Aliases',
+        value: `${
+          cmd.executor.options.aliases
+            ? cmd.executor.options.aliases.join(', ')
+            : 'None.'
+        }`,
+        inline: true
+      });
+      embed.addField({
+        name: 'Category',
+        value: `${cmd.executor.options.category || 'None.'}`,
+        inline: true
+      });
+      embed.setFooter({
+        text: `For ${message.author.getTag()}`,
+        iconUrl: message.author.getAvatarUrl()
+      });
+      await message.reply({ embed: embed });
+    }
+  }
+);
 
 var mineMsgId: string;
 var mineSize: number;
@@ -11,22 +95,25 @@ var firstTime: boolean;
 var theActualField: Array<string>;
 var winCounter: number = 0;
 
-cmd.raw({
-  name: 'showfield',
-  aliases: ['sf', 'field', 'show'],
-  description: 'Shows the field',
-  filters: USER_PERMS
-}, async (msg) => {
-  await msg?.reply((await generateField(10, 3, false, -1)).join(''));
-});
+commands.raw(
+  {
+    name: 'showField',
+    category: 'Fun',
+    description: 'display the minesweeper field',
+    filters: USER
+  },
+  async (msg) => {
+    await msg?.reply((await generateField(10, 3, false, -1)).join(''));
+  }
+);
 
-cmd.on({
-  name: 'minesweeper',
-  aliases: ['ms', 'mine'],
-  description: 'Starts a solo game of Minesweeper',
-  filters: USER_PERMS
-},
-
+commands.on(
+  {
+    name: 'minesweeper',
+    category: 'Fun',
+    description: 'start a solo game of minesweeper',
+    filters: USER
+  },
   (args) => ({
     fieldSize: args.numberOptional(),
     numberOfBombs: args.numberOptional()
@@ -66,12 +153,13 @@ cmd.on({
   }
 );
 
-cmd.on({
-  name: 'minesweeperCoop',
-  aliases: ['msc', 'coop'],
-  description: 'Starts a Coop game of Minesweeper',
-  filters: USER_PERMS
-},
+commands.on(
+  {
+    name: 'minesweeperCoop',
+    category: 'Fun',
+    description: 'start a Coop game of minesweeper',
+    filters: USER
+  },
   (args) => ({
     fieldSize: args.numberOptional(),
     numberOfBombs: args.numberOptional()
@@ -120,12 +208,13 @@ cmd.on({
   }
 );
 
-cmd.on({
-  name: 'op',
-  aliases: ['position', 'square'],
-  description: 'select a square to uncover in a game of Minesweeper',
-  filters: USER_PERMS
-}.
+commands.on(
+  {
+    name: 'op',
+    category: 'Fun',
+    description: 'select a position in a game of minesweeper',
+    filters: USER
+  },
   (args) => ({
     x: args.number(),
     y: args.number()

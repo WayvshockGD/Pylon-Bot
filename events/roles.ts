@@ -1,9 +1,69 @@
 const definitions = [
     {
-      role: ' ',
-      message: ' ',
-      emoji: '☑️',
-      type: 'once'
+      role: REACTION_ROLE_1,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_1,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_2,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_2,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_3,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_3,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_4,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_4,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_5,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_5,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_6,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_6,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_7,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_7,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_8,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_8,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_9,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_9,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_10,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_10,
+      type: 'toggle'
+    },
+    {
+      role: REACTION_ROLE_11,
+      message: REACTION_MESSAGE_1,
+      emoji: REACTION_EMOJI_11,
+      type: 'toggle'
     }
   ];
   
