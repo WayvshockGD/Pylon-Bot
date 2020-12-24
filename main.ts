@@ -1,5 +1,3 @@
-import './handler';
-import './globals';
 import './events/message';
 import './events/join-leave';
 import './commands/administration/kick';
