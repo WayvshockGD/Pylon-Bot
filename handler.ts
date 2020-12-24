@@ -13,7 +13,6 @@ import './commands/utility/info';
 import './commands/utility/menu';
 import './commands/utility/commands';
 import './commands/economy/economy';
-import './commands/economy/xp';
 
 import KVManager from './kvManager';
 

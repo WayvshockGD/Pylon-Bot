@@ -10,9 +10,9 @@ const cmd = new discord.command.CommandGroup({
 
 cmd.raw(
   {
-    name: 'commands',
-    aliases: ['cmd'],
-    description: 'Displays the guilds commands',
+    name: 'menu',
+    aliases: ['help', 'h', 'Menu', 'Help', 'H'],
+    description: 'Displays the Pylon Menu',
     filters: USER_PERMS
   },
   async (msg) => {
@@ -20,11 +20,11 @@ cmd.raw(
     await menu.setColor(0x3f888f);
     await menu.setTitle('Pylon Menu');
     await menu.setDescription(
-      `Select a category?
-1️⃣: Moderation Commands
-2️⃣: Social Commands
-3️⃣: Fun Commands
-4️⃣: Utility Commands`
+      `Select an option.
+1️⃣: Pylon Commands
+2️⃣: Potato Economy
+3️⃣: Rules and TOS
+`
     );
 
     const thehelpmsg = await msg.reply(menu);
@@ -32,7 +32,6 @@ cmd.raw(
     await thehelpmsg.addReaction('1️⃣');
     await thehelpmsg.addReaction('2️⃣');
     await thehelpmsg.addReaction('3️⃣');
-    await thehelpmsg.addReaction('4️⃣');
     await thehelpmsg.addReaction('❌');
 
     MSGID = thehelpmsg.id;
@@ -54,10 +53,8 @@ discord.registerEventHandler('MESSAGE_REACTION_ADD', async (theReaction) => {
   ) {
     const option1 = new discord.Embed();
     await option1.setColor(0x3f888f);
-    await option1.setTitle('Moderation Commands');
-    await option1.setDescription(
-      ' `[p]kick [@member]`: Kick a member from the guild.\n `[p]ban [@member] [reason]`: Ban a member from the guild for s specified reason.\n `[p]mute [@member]`: Mute a member\n `[p]unmute [@member]`: Unmutes a member.\n `[p]broadcast`: Broadcast a message to all channels in the guild.'
-    );
+    await option1.setTitle('Pylon Menu');
+    await option1.setDescription('Need a list of commands? Use `[p]commands`');
     const theMsg2 = await theMsg.reply(option1);
     MSGID = '';
     AUTHORID = '';
@@ -71,9 +68,9 @@ discord.registerEventHandler('MESSAGE_REACTION_ADD', async (theReaction) => {
   ) {
     const option2 = new discord.Embed();
     await option2.setColor(0x3f888f);
-    await option2.setTitle('Twitter Commands');
+    await option2.setTitle('Pylon Menu');
     await option2.setDescription(
-      ' `[p]twitter sub [Twitter Handle] [Channel]`: Subscribe to a twitter handle in the specified channel.\n `[p]twitter unsub [Twitter Handle]`: Unsubscribe from a specified Twitter Handle.\n `[p]twitter list`: List all subscribed Twitter Handles.'
+      'Need a list of Potato Ecomony commands? Use `[p]potato help`'
     );
     const theMsg3 = await theMsg.reply(option2);
     MSGID = '';
@@ -87,29 +84,12 @@ discord.registerEventHandler('MESSAGE_REACTION_ADD', async (theReaction) => {
   ) {
     const option3 = new discord.Embed();
     await option3.setColor(0x3f888f);
-    await option3.setTitle('Fun Commands');
+    await option3.setTitle('Pylon Menu');
     await option3.setDescription(
-      '`[p]minesweeper`: Start a solo game of Minesweeper.\n `[p]minesweeperCoop`: Start a Coop game of Minesweeper.\n `[p]op [x] [y]`: Selects a square in Minesweeper.'
+      '・ **NO** personal attacks, accusations, harassment,\nsexism, racism, or general malicious behavior. This\nincludes, but is not limited to comments that we deem\nto be of this nature.\n・ Please use the correct channels, all spam of\ncommands should also only be in the botspam\nchannel.\n・ **DO NOT** ping or **DM** the Mods or Admins\nunless they are needed.\n・ **NO** unpleasant behavior, this includes but is not\nlimited to: spamming chats, posting invite links, self \nbots, hacking, trolling, raids, etc.\n・ **DO NOT** beg for roles.\n・ **DO NOT** falsely report users.\n・ **DO NOT** ping people without a good reason.\n・ You need to follow discords terms of service\nlocated at: `https://discord.com/terms`\n**By joining this server, you have agreed to all of the**\n**above, and by using Discord you agree to using the**\n**TOS**'
     );
 
     const theMsg4 = await theMsg.reply(option3);
-    MSGID = '';
-    AUTHORID = '';
-    await theMsg.delete();
-  }
-  if (
-    theReaction.emoji.name == '4️⃣' &&
-    theReaction.messageId == MSGID &&
-    theReaction.member.user.id == AUTHORID
-  ) {
-    const option4 = new discord.Embed();
-    await option4.setColor(0x3f888f);
-    await option4.setTitle('Utility Commands');
-    await option4.setDescription(
-      " `[p]ping`: Makes the bot respond with Pong!\n `guild`: Displayes the guild's info.\n `[p]info [@member]`: Displays a user's guild info.\n `[p]rank [@member]`: Displays a user's guild rank.\n `[p]top`: Displays the guild leaderboard.\n `[p]menu`: Displays the guild's menu.\n `[p]commands`: Displays the guild's available commands.'"
-    );
-
-    const theMsg4 = await theMsg.reply(option4);
     MSGID = '';
     AUTHORID = '';
     await theMsg.delete();
@@ -121,8 +101,8 @@ discord.registerEventHandler('MESSAGE_REACTION_ADD', async (theReaction) => {
   ) {
     const option8 = new discord.Embed();
     await option8.setColor(0x3f888f);
-    await option8.setTitle('**Pylon Menu**');
-    await option8.setDescription(`Selection Cancelled`);
+    await option8.setTitle('**Canceled**');
+    await option8.setDescription(`You chanceled the command selection`);
 
     const theMsg4 = await theMsg.reply(option8);
     MSGID = '';
