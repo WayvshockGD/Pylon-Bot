@@ -12,7 +12,7 @@ import './commands/utility/ping';
 import './commands/utility/info';
 import './commands/utility/menu';
 import './commands/utility/commands';
-import './commands/economy/economy';
+import './commands/economy/potato';
 
 import KVManager from './kvManager';
 
