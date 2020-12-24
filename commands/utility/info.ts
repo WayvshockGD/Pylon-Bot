@@ -1,5 +1,5 @@
 const prefix = DEFAULT_PREFIX;
-const commandsUtility = new discord.command.CommandGroup({
+const cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });
 const timeMap = new Map([
@@ -57,7 +57,7 @@ function decomposeSnowflake(snowflake: string) {
   return res;
 }
 
-commandsUtility.raw(
+cmd.raw(
   {
     name: 'guild',
     aliases: ['g'],
@@ -281,7 +281,7 @@ commandsUtility.raw(
   }
 );
 
-commandsUtility.on(
+cmd.on(
   {
     name: 'info',
     aliases: ['i', 'user'],

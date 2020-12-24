@@ -1,5 +1,5 @@
 const prefix = DEFAULT_PREFIX;
-const rankCommands = new discord.command.CommandGroup({
+const cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });
 
@@ -98,7 +98,7 @@ discord.on(discord.Event.MESSAGE_CREATE, async (message: discord.Message) => {
     await sendRankCard(message, message.author, newXP, true);
 });
 
-rankCommands.on(
+cmd.on(
   { name: 'rank', aliases: ['level'], description: 'Rank card' },
   (args) => ({ user: args.userOptional() }),
   async (message, { user }) => {
@@ -109,7 +109,7 @@ rankCommands.on(
   }
 );
 
-rankCommands.on(
+cmd.on(
   {
     name: 'top',
     description: 'XP leaderboard',
