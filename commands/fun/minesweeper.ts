@@ -12,12 +12,12 @@ const Commands = new discord.command.CommandGroup({
   var winCounter: number = 0;
   // #endregion
   
-  Commands.raw('showField', async (msg) => {
+  cmd.raw('showField', async (msg) => {
     await msg?.reply((await generateField(10, 3, false, -1)).join(''));
   });
   
   // Minesweeper (with Spoilers)
-  Commands.on(
+  cmd.on(
     'minesweeper',
     (args) => ({
       fieldSize: args.numberOptional(),
@@ -59,7 +59,7 @@ const Commands = new discord.command.CommandGroup({
   );
   
   // Minesweeper coop
-  Commands.on(
+  cmd.on(
     'minesweeperCoop',
     (args) => ({
       fieldSize: args.numberOptional(),
@@ -110,7 +110,7 @@ const Commands = new discord.command.CommandGroup({
   );
   
   // Open field for coop
-  Commands.on(
+  cmd.on(
     'op',
     (args) => ({
       x: args.number(),
