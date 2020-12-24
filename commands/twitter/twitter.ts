@@ -1,4 +1,10 @@
-const prefix = DEFAULT_PREFIX;
+const ADMIN_ROLE = ' ';
+const TWITTER_API = ' ';
+const TWITTER_BEARER =
+  ' ';
+const TWITTER_ICON =
+  'https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png';
+const prefix = ' ';
 const TwitterSubCfg = {
   TWITTER_API_KEY: TWITTER_API,
   TWITTER_BEARER_TOKEN: TWITTER_BEARER,

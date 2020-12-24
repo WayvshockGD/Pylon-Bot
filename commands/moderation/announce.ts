@@ -1,4 +1,13 @@
-const prefix = DEFAULT_PREFIX;
+const ANNOUNCEMENT_CHANNEL = ' ';
+const GUILD_ICON =
+  ' ';
+let f = discord.command.filters;
+const MOD_PERMS = f.and(
+  f.canMuteMembers(),
+  f.canManageMessages(),
+  f.canManageRoles()
+);
+const prefix = ' ';
 let cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });

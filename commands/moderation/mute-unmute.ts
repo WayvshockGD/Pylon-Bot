@@ -1,5 +1,11 @@
-const prefix = DEFAULT_PREFIX;
-const muteRole = MUTE_ROLE;
+let f = discord.command.filters;
+const MOD_PERMS = f.and(
+  f.canMuteMembers(),
+  f.canManageMessages(),
+  f.canManageRoles()
+);
+const prefix = ' ';
+const muteRole = ' ';
 const muteKv = new pylon.KVNamespace('mutes');
 const cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix

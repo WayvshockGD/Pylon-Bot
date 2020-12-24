@@ -1,4 +1,13 @@
-const prefix = DEFAULT_PREFIX;
+import './menu/commands';
+
+let f = discord.command.filters;
+global.USER_PERMS = f.and(
+  f.canSendMessages(),
+  f.canEmbedLinks(),
+  f.canUseExternalEmojis(),
+  f.canUseVoiceActivity()
+);
+const prefix = 'p.';
 
 var MSGID = '';
 var AUTHORID = '';

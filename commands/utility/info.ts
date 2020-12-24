@@ -1,4 +1,11 @@
-const prefix = DEFAULT_PREFIX;
+let f = discord.command.filters;
+global.USER_PERMS = f.and(
+  f.canSendMessages(),
+  f.canEmbedLinks(),
+  f.canUseExternalEmojis(),
+  f.canUseVoiceActivity()
+);
+const prefix = ' ';
 const cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });

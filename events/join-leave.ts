@@ -1,3 +1,7 @@
+const BOT_ROLE = ' ';
+const MEMBER_ROLE = ' ';
+const FAPI_TOKEN = ' ';
+const JOIN_LEAVE_CHANNEL = ' ';
 const joinLeaveImage = async (
   join: boolean,
   member: discord.GuildMember | discord.Event.IGuildMemberRemove

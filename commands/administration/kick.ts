@@ -1,4 +1,11 @@
-const prefix = DEFAULT_PREFIX;
+let f = discord.command.filters;
+const ADMIN_PERMS = f.and(
+  f.canViewAuditLog(),
+  f.canBanMembers(),
+  f.canKickMembers(),
+  f.canViewGuildInsights()
+);
+const prefix = ' ';
 const cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });

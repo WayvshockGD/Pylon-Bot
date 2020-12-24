@@ -1,3 +1,4 @@
+const POTATO_LOTTERY_CHANNEL = ' ';
 const POTATO_LOTTERY_TIME_MINUTES = 5;
 const ALLOW_DAILY = true;
 const SHOP_ITEMS = {
@@ -43,7 +44,7 @@ const MEDALS = [
 ];
 
 const potatoCommands = new discord.command.CommandGroup({
-  defaultPrefix: DEFAULT_PREFIX
+  defaultPrefix: ' '
 });
 const potatoKV = new pylon.KVNamespace('potato');
 const randomTimeBetween = (min: number, max: number) =>
