@@ -6,7 +6,7 @@ import './commands/administration/broadcast';
 import './commands/moderation/mute-unmute';
 import './commands/moderation/announce';
 import './commands/helper/ping';
-import './commands/twitter/twitter';
+import './commands/social/twitter';
 import './commands/utility/levels';
 import './commands/utility/info';
 import './commands/utility/menu';
