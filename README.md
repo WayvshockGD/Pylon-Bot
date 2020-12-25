@@ -1,4 +1,4 @@
-[![](https://img.shields.io/codeclimate/issues/New-Horizon-Network/Pylon-Bot)](https://github.com/New-Horizon-Network/Pylon-Bot)
+[![](https://img.shields.io/github/issues/New-Horizon-Network/Pylon-Bot)](https://github.com/New-Horizon-Network/Pylon-Bot)
 [![](https://img.shields.io/github/languages/code-size/New-Horizon-Network/Pylon-Bot)](https://github.com/New-Horizon-Network/Pylon-Bot)
 [![](https://img.shields.io/github/languages/code-size/New-Horizon-Network/Pylon-Bot)](https://github.com/New-Horizon-Network/Pylon-Bot)
 [![](https://img.shields.io/github/downloads/New-Horizon-Network/Pylon-Bot/total)](https://github.com/New-Horizon-Network/Pylon-Bot/releases)
