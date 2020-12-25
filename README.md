@@ -11,4 +11,4 @@ Code for use with [Pylon.bot](https://Pylon.bot)
 
 
 This repo was created for use with storing and sharing code to use with [Pylon.bot](https://Pylon.bot).
-Before you use anything from this repo please download the code so as to help us know how many people are using our code. This won't display who uses it but it will add to the downloads counter at the top of this README file.
+Before you use anything from this repo please download the code via our releases so as to help us know how many people are using our code. This won't display who uses it but it will add to the downloads counter at the top of this README file.
