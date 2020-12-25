@@ -1,3 +1,5 @@
+[!(https://img.shields.io/badge/types-Flow%20%7C%20TypeScript-blue)]
+[!(https://img.shields.io/github/downloads/New-Horizon-Network/Pylon-Bot/total)](https://github.com/New-Horizon-Network/Pylon-Bot/releases)
 [![](https://discordapp.com/api/guilds/765992820841513050/widget.png?style=shield)](https://discord.gg/neb8Avfsgg)
 
 # Pylon.bot
