@@ -3,7 +3,7 @@
 [![](https://discordapp.com/api/guilds/765992820841513050/widget.png?style=shield)](https://discord.gg/neb8Avfsgg)
 
 # Pylon.bot
-Code for use with [Pylon.bot](https://Pylon.bot)
+New Horizon Network's [Pylon.bot](https://Pylon.bot)
 
 ![](https://raw.githubusercontent.com/New-Horizon-Network/Pylon-Bot/master/images/Screenshot_2020-11-01_02-25-13.png)
 
