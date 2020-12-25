@@ -1,4 +1,4 @@
-
+[![](https://discordapp.com/api/guilds/765992820841513050/widget.png?style=shield)](https://discord.gg/neb8Avfsgg)
 # Pylon.bot
 Code for use with [Pylon.bot](https://Pylon.bot)
 
@@ -15,7 +15,3 @@ Before you push anything to this repo please be sure it follows these guidelines
  - Edits and imporvements are allowed. However, do **NOT** simply try to rebrand commands already implemented.
  - Must provide a detailed explanation of the command in the commit description so we know what it is and what it does.
  - Must push **ONLY** to the review branch.
-
-### Support
-
-[![Discord](https://discordapp.com/api/guilds/765992820841513050/widget.png?style=shield)](https://discord.gg/neb8Avfsgg)
