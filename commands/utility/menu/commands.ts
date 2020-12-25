@@ -151,7 +151,7 @@ discord.registerEventHandler('MESSAGE_REACTION_ADD', async (theReaction) => {
     await option6.setColor(0x3f888f);
     await option6.setTitle('Utility Commands');
     await option6.setDescription(
-      " `[p]guild`: Displayes the guild's info.\n `[p]info [@member]`: Displays a user's guild info.\n `[p]rank [@member]`: Displays a user's guild rank.\n `[p]top`: Displays the guild leaderboard.\n `[p]menu`: Displays the guild's menu.\n `[p]commands`: Displays the guild's available commands.'"
+      " `[p]guild`: Displayes the guild's info.\n `[p]info [@member]`: Displays a user's guild info.\n `[p]rank [@member]`: Displays a user's guild rank.\n `[p]top`: Displays the guild leaderboard.\n `[p]economy`: Displays a list of commands for the economy system.\n `[p]menu`: Displays the guild's menu.\n `[p]commands`: Displays the guild's available commands.'"
     );
 
     const theMsg6 = await theMsg.reply(option6);

@@ -10,7 +10,7 @@ import './commands/social/twitter';
 import './commands/utility/levels';
 import './commands/utility/info';
 import './commands/utility/menu';
-import './commands/economy/potato';
+import './commands/economy/ezmoney';
 
 import KVManager from './kvManager';
 
