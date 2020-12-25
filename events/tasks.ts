@@ -1,3 +1,5 @@
+const MEMBER_COUNT_CHANNEL = ' ';
+
 pylon.tasks.cron('update_member_count', '0 0/5 * * * * *', async () => {
     const channel = await discord.getGuildVoiceChannel(' ');
     if (!channel) {

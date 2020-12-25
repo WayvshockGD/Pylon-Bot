@@ -1,4 +1,4 @@
-const prefix = ' ';
+const prefix = 'p.';
 const commands = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });

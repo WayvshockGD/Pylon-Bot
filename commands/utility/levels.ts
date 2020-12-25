@@ -6,7 +6,7 @@ global.USER_PERMS = f.and(
   f.canUseVoiceActivity()
 );
 const FAPI_TOKEN = ' ';
-const prefix = ' ';
+const prefix = 'p.';
 const cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });

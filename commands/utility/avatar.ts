@@ -12,7 +12,7 @@ let reactions = {
   next: discord.decor.Emojis.ARROW_UP as string
 };
 
-const prefix = ' ';
+const prefix = 'p.';
 const cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });

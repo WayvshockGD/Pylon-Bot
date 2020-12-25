@@ -4,7 +4,7 @@ const MOD_PERMS = f.and(
   f.canManageMessages(),
   f.canManageRoles()
 );
-const prefix = ' ';
+const prefix = 'p.';
 const muteRole = ' ';
 const muteKv = new pylon.KVNamespace('mutes');
 const cmd = new discord.command.CommandGroup({

@@ -7,7 +7,7 @@ const MOD_PERMS = f.and(
   f.canManageMessages(),
   f.canManageRoles()
 );
-const prefix = ' ';
+const prefix = 'p.';
 let cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });

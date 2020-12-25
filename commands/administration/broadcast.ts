@@ -8,7 +8,7 @@ const ADMIN_PERMS = f.and(
   f.canKickMembers(),
   f.canViewGuildInsights()
 );
-const prefix = ' ';
+const prefix = 'p.';
 let cmd = new discord.command.CommandGroup({
   defaultPrefix: prefix
 });

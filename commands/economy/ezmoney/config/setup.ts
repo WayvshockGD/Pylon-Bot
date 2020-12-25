@@ -1,4 +1,5 @@
 /* other-bot STORAGE + GENERAL SETUP */
+import '..../var/config';
 export interface IUserInventory extends pylon.JsonObject {
     xp: number;
     bal: number;
@@ -115,9 +116,9 @@ export interface IUserInventory extends pylon.JsonObject {
   ]);
   
   // commands declaration
-  const PREFIX = 'p.';
+ 
   export const obc = new discord.command.CommandGroup({
-    defaultPrefix: PREFIX
+    defaultPrefix: prefix
   });
   export default obc;
   

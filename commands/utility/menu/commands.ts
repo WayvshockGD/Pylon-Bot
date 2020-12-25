@@ -5,7 +5,7 @@ global.USER_PERMS = f.and(
   f.canUseExternalEmojis(),
   f.canUseVoiceActivity()
 );
-const prefix = ' ';
+const prefix = 'p.';
 
 var MSGID = '';
 var AUTHORID = '';

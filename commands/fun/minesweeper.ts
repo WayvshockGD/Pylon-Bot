@@ -1,5 +1,6 @@
+const prefix = 'p.';
 const Commands = new discord.command.CommandGroup({
-  defaultPrefix:' '
+  defaultPrefix: prefix
 });
 
 // #region the Variables
