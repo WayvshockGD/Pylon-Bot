@@ -1,3 +1,4 @@
+
 # Pylon.bot
 Code for use with [Pylon.bot](https://Pylon.bot)
 
@@ -16,4 +17,4 @@ Before you push anything to this repo please be sure it follows these guidelines
  - Must push **ONLY** to the review branch.
 
 ### Support
- [Discord](https://discord.gg/hC6Bbtj)
+[![Discord](https://discordapp.com/api/guilds/765992820841513050/widget.png?style=shield)](https://discord.gg/neb8Avfsgg)
